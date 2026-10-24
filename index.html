@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>San Antonio Trip Guide — Flights, Hotels & Total Cost (Nov 2 → Nov 5, 2026)</title>
+<style>
+  :root {
+    --green:#16793b; --green-bg:#eefaf1; --gold:#b26b00; --gold-bg:#fff6e5;
+    --red:#c0392b; --red-bg:#fdecea; --blue:#0b3d91; --blue-bg:#e8eefc;
+    --ink:#1c2333; --muted:#5a6478; --card:#f8fafd; --line:#dfe5ee;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; color: var(--ink); margin: 0; background: #fff; line-height: 1.58; -webkit-text-size-adjust: 100%; }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 18px 16px 64px; }
+  .topbar { display:flex; gap:8px; flex-wrap:wrap; align-items:center; justify-content:space-between; margin-bottom:12px; }
+  .navpills { display:flex; gap:6px; flex-wrap:wrap; }
+  .navpills a { background:var(--blue-bg); color:var(--blue); text-decoration:none; font-size:.82rem; font-weight:600; padding:6px 11px; border-radius:20px; }
+  header { background: linear-gradient(135deg,#0b3d91,#16793b); color:#fff; border-radius: 16px; padding: 22px 20px; margin-bottom: 16px; box-shadow: 0 4px 14px rgba(11,61,145,.12); }
+  header h1 { margin: 0 0 8px; font-size: 1.45rem; letter-spacing: -.01em; }
+  header p { margin: 3px 0; font-size: .95rem; opacity: .96; }
+  .tldr { background:var(--green-bg); border:2px solid var(--green); border-radius:14px; padding:16px; margin:16px 0; font-size:1rem; }
+  .deadline { background:var(--gold-bg); border:1px solid #ffd591; border-left:6px solid var(--gold); border-radius:12px; padding:13px 15px; margin:14px 0; font-size:.95rem; }
+  h2 { font-size: 1.2rem; border-bottom: 2px solid var(--line); padding-bottom: 6px; margin-top: 32px; scroll-margin-top: 16px; }
+  .grid3 { display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; margin:14px 0; }
+  .budget-card { background:var(--card); border:1.5px solid var(--line); border-radius:14px; padding:14px; display:flex; flex-direction:column; justify-content:space-between; page-break-inside:avoid; break-inside:avoid; }
+  .budget-card.featured { border:2px solid var(--green); background:#f4fbf6; }
+  .budget-card h3 { margin:0 0 4px; font-size:1rem; }
+  .big-total { font-size:1.35rem; font-weight:800; color:var(--green); margin:4px 0 2px; }
+  .due-today { background:var(--blue-bg); color:var(--blue); border-radius:8px; padding:7px 10px; font-size:.84rem; font-weight:600; margin-top:8px; }
+  .opt { background: var(--card); border:1px solid var(--line); border-radius: 14px; padding: 15px 16px; margin: 12px 0; page-break-inside:avoid; break-inside:avoid; }
+  .opt h3 { margin: 0 0 4px; font-size: 1.06rem; }
+  .rank { display:inline-block; background:var(--green); color:#fff; border-radius:20px; padding:2px 10px; font-size:.78rem; margin-right:7px; vertical-align:middle; }
+  .rank.hack { background:var(--blue); }
+  .price { font-size: 1.18rem; font-weight: 700; color: var(--green); display:block; margin:4px 0; }
+  .tag { display:inline-block; background:var(--blue-bg); color:var(--blue); border-radius:6px; padding:2px 8px; font-size:.78rem; margin:2px 4px 2px 0; font-weight:500; }
+  .means { background:#fff; border-left:4px solid var(--green); padding:8px 11px; margin:8px 0; font-size:.92rem; border-radius:0 8px 8px 0; }
+  ul { margin: 6px 0; padding-left: 20px; }
+  li { margin: 5px 0; }
+  .checklist { list-style:none; padding-left:4px; }
+  .checklist li { display:flex; align-items:flex-start; gap:9px; padding:6px 4px; border-bottom:1px dashed var(--line); }
+  .checklist input[type="checkbox"] { width:18px; height:18px; margin-top:3px; accent-color:var(--green); flex-shrink:0; }
+  .tablewrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius:10px; }
+  table { width:100%; border-collapse: collapse; font-size: .9rem; margin: 8px 0; }
+  th, td { border:1px solid var(--line); padding: 9px 10px; text-align:left; vertical-align: top; }
+  th { background:#eef2f8; font-weight:700; }
+  a { color:var(--blue); font-weight:600; }
+  .btn { display:inline-block; background:var(--green); color:#fff !important; text-decoration:none; border-radius:9px; padding:9px 15px; font-weight:600; margin:6px 6px 0 0; font-size:.9rem; border:none; cursor:pointer; }
+  .btn.blue { background:var(--blue); }
+  .btn.print { background:#222; font-size:.92rem; padding:10px 16px; }
+  .steps { background:#fff; border:1px dashed var(--green); border-radius:10px; padding:10px 14px; margin-top:10px; font-size:.92rem; }
+  .warn { background:var(--red-bg); border-left:6px solid var(--red); border-radius:10px; padding:12px 14px; margin:14px 0; font-size:.92rem; page-break-inside:avoid; }
+  .tip { background:var(--green-bg); border-left:6px solid var(--green); border-radius:10px; padding:12px 14px; margin:14px 0; font-size:.92rem; page-break-inside:avoid; }
+  .small { font-size:.82rem; color:var(--muted); }
+  .gloss dt { font-weight:700; margin-top:8px; }
+  .gloss dd { margin:0 0 4px 0; font-size:.92rem; }
+  footer { margin-top:32px; font-size:.76rem; color:var(--muted); border-top:1px solid var(--line); padding-top:12px; }
+  @media (max-width: 640px) {
+    .wrap { padding: 12px 11px 48px; }
+    .grid3 { grid-template-columns: 1fr; }
+    header { padding: 16px 14px; }
+    header h1 { font-size: 1.2rem; }
+    header p { font-size: .86rem; }
+    h2 { font-size: 1.08rem; margin-top: 24px; }
+    .price { font-size: 1.06rem; }
+    .tldr { font-size: .94rem; padding: 13px; }
+    .btn { display: block; width: 100%; text-align: center; margin: 8px 0 0; padding: 12px 14px; }
+    table { font-size: .82rem; min-width: 480px; }
+    th, td { padding: 7px 8px; }
+    .opt { padding: 13px; }
+  }
+  @media print {
+    .btn, .noprint, .topbar { display:none !important; }
+    header, .tldr, .opt, .deadline, .budget-card, .warn, .tip { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .grid3 { grid-template-columns: repeat(3, 1fr); }
+    body { font-size: 11.5px; line-height: 1.45; }
+    .wrap { max-width: 100%; padding: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="topbar noprint">
+  <div class="navpills">
+    <a href="#totals">💰 Total Cost</a>
+    <a href="#flights">✈️ Flights</a>
+    <a href="#hotels">🏨 Hotels</a>
+    <a href="#payplans">💳 Payment Plans</a>
+    <a href="#hacks">🎒 Bag & Bus Hacks</a>
+    <a href="#checklist">✅ Checklist</a>
+  </div>
+  <div style="display:flex;gap:6px;flex-wrap:wrap;width:100%;justify-content:flex-end;">
+    <button class="btn blue" style="margin:0;padding:9px 14px;" onclick="if(navigator.share){navigator.share({title:document.title,url:location.href})}else{navigator.clipboard.writeText(location.href);this.textContent='✅ Link Copied!'}">📲 Share to Phone</button>
+    <button class="btn print" style="margin:0;" onclick="window.print()">🖨️ Save / Print as PDF</button>
+  </div>
+</div>
+
+<header>
+  <h1>✈️ San Antonio Trip — Complete Family Guide</h1>
+  <p><b>2 Travelers</b> · Depart <b>Mon, Nov 2, 2026</b> · Return <b>Thu, Nov 5, 2026</b> (3 nights)</p>
+  <p>From: L.A. / Orange County (LAX, SNA, LGB, ONT) → San Antonio, TX (SAT)</p>
+  <p>Updated Oct 23, 2026 · Tap any blue link or green button to open the booking page</p>
+</header>
+
+<div class="tldr">
+  <b>🟢 The 30-Second Game Plan:</b><br>
+  1. <b>Cheapest online flight:</b> <a target="_blank" rel="noopener noreferrer" href="https://www.flyfrontier.com">Frontier from LAX</a> leaving <b>Mon Nov 2 at 9:57 PM</b> &amp; returning <b>Thu Nov 5</b> (~<b>$226/person</b> = <b>~$452 for 2</b>).<br>
+  2. <b>Even cheaper in-person hack:</b> Buy that exact same Frontier ticket at the <b>LAX or SNA airport counter</b> to waive online booking fees — drops flights to <b>~$268–$362 for 2</b>.<br>
+  3. <b>Pay in 4 (0% interest):</b> Use <a target="_blank" rel="noopener noreferrer" href="https://www.klarna.com/us/">Klarna</a> or <a target="_blank" rel="noopener noreferrer" href="https://zip.co/us">Zip</a> so you only pay <b>25% today (~$113 for both flights)</b>, or use <a target="_blank" rel="noopener noreferrer" href="https://www.upgrade.com/flex-pay/">Flex Pay</a> monthly at checkout.
+</div>
+
+<div class="deadline">
+  ⏰ <b>Book within 24–48 hours (by Sat, Oct 24).</b> The trip is ~10 days away. Fares on this route average ~$202 when booked a month out, but spike toward <b>~$364/person</b> in the final days. Plus, federal rules give you <b>24-hour free cancellation</b> on flights booked 7+ days before takeoff — so you can lock in a good fare tonight risk-free!
+</div>
+
+<h2 id="totals">💰 Rough Total Trip Cost (2 People · 3 Nights · Nov 2–5)</h2>
+<p class="small">Includes round-trip flights for 2 + 3 nights in 1 shared hotel room (with estimated ~18% hotel tax) + airport-to-downtown transit. Food &amp; activities are extra.</p>
+
+<div class="grid3">
+  <div class="budget-card">
+    <div>
+      <span class="tag">Tier 1 · Lowest Possible</span>
+      <h3>🏷️ Airport-Counter Hack</h3>
+      <div class="big-total">~$450 – $555</div>
+      <div class="small"><b>~$225–$278 per person</b></div>
+      <ul>
+        <li><b>Flights (2):</b> ~$268–$362 (Frontier bought at LAX counter)</li>
+        <li><b>Hotel (3 nights):</b> ~$170–$177 w/ tax (Studio 6 or Red Roof)</li>
+        <li><b>Airport transit:</b> ~$11 (VIA Bus $2.75 day passes)</li>
+      </ul>
+    </div>
+    <div class="due-today">💡 Lowest overall price, paid at airport counter (Zip virtual card works at kiosks)</div>
+  </div>
+
+  <div class="budget-card featured">
+    <div>
+      <span class="tag">Tier 2 · Easiest Online Pick</span>
+      <h3>⭐ Standard Budget Trip</h3>
+      <div class="big-total">~$645 – $675</div>
+      <div class="small"><b>~$323–$338 per person</b></div>
+      <ul>
+        <li><b>Flights (2):</b> ~$452 (Frontier LAX booked online)</li>
+        <li><b>Hotel (3 nights):</b> ~$177 w/ tax (Red Roof Inn Airport)</li>
+        <li><b>Transit:</b> ~$15–$45 (VIA Bus + 1–2 short Ubers)</li>
+      </ul>
+    </div>
+    <div class="due-today">💳 <b>With Pay-in-4 (25% due today):</b><br>Only <b>~$157 total today</b> (~$79/person) for flights + hotel!</div>
+  </div>
+
+  <div class="budget-card">
+    <div>
+      <span class="tag">Tier 3 · Closer Airport + Perks</span>
+      <h3>🥐 Comfort &amp; Free Breakfast</h3>
+      <div class="big-total">~$785 – $815</div>
+      <div class="small"><b>~$393–$408 per person</b></div>
+      <ul>
+        <li><b>Flights (2):</b> ~$488–$516 (Frontier from Orange County SNA)</li>
+        <li><b>Hotel (3 nights):</b> ~$294 w/ tax (La Quinta Airport)</li>
+        <li><b>Perks included:</b> Free airport shuttle + free hot waffle breakfast (saves ~$100+ on food/Uber)</li>
+      </ul>
+    </div>
+    <div class="due-today">💳 <b>With Pay-in-4 (25% due today):</b><br>Only <b>~$196 total today</b> (~$98/person)!</div>
+  </div>
+</div>
+
+<h2 id="flights">🏆 Ranked Flight Options (for 2 Travelers)</h2>
+
+<div class="opt">
+  <h3><span class="rank">#1</span>Cheapest Online: Frontier from LAX (Mon Night)</h3>
+  <span class="price">≈ $226/person round trip → ≈ $452 for 2</span>
+  <span class="tag">Depart Mon Nov 2, 9:57 PM</span><span class="tag">1 stop (Las Vegas)</span><span class="tag">Return Thu Nov 5</span>
+  <div class="means"><b>Why it's #1:</b> On the LAX → San Antonio route, <b>late-night departures average $223</b> while <b>early-morning departures average $461</b>. Taking the 9:57 PM flight is the single biggest reason this stays near $226/person.</div>
+  <div class="steps"><b>5-Minute Setup:</b> Open <a target="_blank" rel="noopener noreferrer" href="https://www.flyfrontier.com">flyfrontier.com</a> → search <b>LAX to SAT</b>, <b>Nov 2 – Nov 5</b>, <b>2 Adults</b> → select Basic fare (skip paid bundles/seats) → at checkout choose <b>Flex Pay</b> or pay with your <b>Klarna / Zip</b> virtual Visa card.</div>
+  <a class="btn" target="_blank" rel="noopener noreferrer" href="https://www.flyfrontier.com">Book on flyfrontier.com →</a>
+</div>
+
+<div class="opt">
+  <h3><span class="rank hack">#2</span>Secret Weapon: Buy Frontier In-Person at LAX or SNA Counter</h3>
+  <span class="price">≈ $134–$181/person → ≈ $268–$362 for 2</span>
+  <span class="tag">Saves $92 to $184 in online fees</span><span class="tag">Same flights as #1 or #3</span>
+  <div class="means"><b>How this works:</b> Frontier's official fee chart charges a <b>“Carrier Interface Charge” of up to $23 per passenger, per flight segment</b> when you book online. Because a 1-stop round trip for 2 people has <b>8 flight segments</b> (2 people × 4 flights), buying at the airport ticket counter waives up to <b>$184</b> in online fees!</div>
+  <ul>
+    <li><b>Pro tip:</b> Screenshot the online price on your phone first, then ask the counter agent at LAX (Terminal 1) or SNA for that exact flight without the Carrier Interface Charge.</li>
+  </ul>
+</div>
+
+<div class="opt">
+  <h3><span class="rank">#3</span>Closer Airport: Frontier from Orange County / Santa Ana (SNA)</h3>
+  <span class="price">≈ $244–$258/person → ≈ $488–$516 for 2</span>
+  <span class="tag">Depart Mon Nov 2, 3:55 PM</span><span class="tag">Return Thu Nov 5, 10:30 PM</span>
+  <div class="means"><b>Why pick it:</b> Avoids LAX traffic and afternoon departure is easier than late night. Costs ~$35–$60 more total for two people, which you may save on gas/parking/Uber to LAX.</div>
+  <a class="btn" target="_blank" rel="noopener noreferrer" href="https://www.flyfrontier.com">Search SNA → SAT on Frontier →</a>
+</div>
+
+<div class="opt">
+  <h3><span class="rank">#4</span>If You Must Fly Morning on Nov 2: Nonstop Schedule from LAX</h3>
+  <span class="price">≈ $239–$294+/person → ≈ $478–$588+ for 2</span>
+  <span class="tag">3-hour nonstop flights</span><span class="tag">Free carry-on roller bag</span>
+  <div class="means"><b>Exact Mon, Nov 2 Morning Nonstops:</b> Only three airlines fly nonstop LAX → SAT (Spirit ended its route in Jan 2026):<br>
+  • <b>Southwest WN3488</b> — departs <b>9:00 AM</b> (accepts Flex Pay &amp; PayPal Pay in 4)<br>
+  • <b>Delta DL2568</b> — departs <b>9:55 AM</b> (accepts PayPal Pay in 4)<br>
+  • <b>American AA4954</b> — departs <b>11:05 AM</b> (accepts Affirm &amp; PayPal; also $150 one-way on Tue Nov 3)<br>
+  • <i>Connecting morning option:</i> <b>Frontier F93156</b> departs <b>6:15 AM</b> (1 stop in Denver) or <b>8:58 AM</b> (1 stop in Vegas).</div>
+  <a class="btn blue" target="_blank" rel="noopener noreferrer" href="https://www.southwest.com">Southwest.com →</a>
+  <a class="btn blue" target="_blank" rel="noopener noreferrer" href="https://www.delta.com">Delta.com →</a>
+  <a class="btn blue" target="_blank" rel="noopener noreferrer" href="https://www.aa.com">AA.com →</a>
+</div>
+
+<div class="opt">
+  <h3><span class="rank hack">#5</span>Backup Hacks: Split One-Ways, Ontario (ONT), or Next Week</h3>
+  <span class="price">From $88–$136 one-way if dates are flexible</span>
+  <ul>
+    <li><b>Check Ontario (ONT):</b> If you can leave <b>Sunday morning, Nov 1</b>, ONT → SAT has Frontier at <b>6:25 AM ($173)</b> or <b>11:52 AM ($167)</b>, and Southwest at <b>5:00 AM ($203)</b>.</li>
+    <li><b>Mix &amp; match 2 one-ways:</b> Book Frontier outbound + American/Southwest return if one direction is cheaper on another airline.</li>
+    <li><b>If dates can move 1 week:</b> Starting <b>Tue, Nov 10 – Thu, Nov 12</b>, Frontier round-trips drop to <b>$197/person ($394 for 2)</b> and Southwest one-ways drop to <b>$136</b>.</li>
+  </ul>
+  <a class="btn blue" target="_blank" rel="noopener noreferrer" href="https://www.google.com/travel/flights">Compare on Google Flights →</a>
+</div>
+
+<h2 id="hotels">🏨 Budget Hotels Near San Antonio Airport (3 Nights: Nov 2–5)</h2>
+<p class="small">San Antonio Airport (SAT) is only ~10–15 minutes north of Downtown &amp; the River Walk. Booking with <b>Free Cancellation</b> lets you lock in a room now and cancel free if plans change.</p>
+
+<div class="tablewrap"><table>
+  <tr><th>Hotel (tap to open)</th><th>Nightly / 3-Night Est. (w/ tax)</th><th>What's Included &amp; Honest Notes</th></tr>
+  <tr>
+    <td><a target="_blank" rel="noopener noreferrer" href="https://www.redroof.com/property/tx/san-antonio/RRI223"><b>Red Roof Inn San Antonio – Airport</b></a> 🔗<br><span class="small">333 Wolfe Rd (&lt;5 min from SAT)</span></td>
+    <td><b>~$50/night</b><br><span class="small">~$177 total for 3 nights</span></td>
+    <td><b>Best budget balance.</b> 7.3/10 guest rating, smoke-free, free Wi-Fi, free parking, lobby coffee. Kids 17 &amp; under stay free.</td>
+  </tr>
+  <tr>
+    <td><a target="_blank" rel="noopener noreferrer" href="https://www.motel6.com/property/motel-san-antonio-texas-us-293461/"><b>Studio 6 San Antonio – Airport</b></a> 🔗<br><span class="small">11221 San Pedro Ave</span></td>
+    <td><b>~$48–$49/night</b><br><span class="small">~$170 total for 3 nights</span></td>
+    <td><b>Has a kitchenette &amp; full fridge</b> (great for saving on meals). Note: recent guest reviews on room upkeep are mixed — pick Red Roof if you want higher consistency.</td>
+  </tr>
+  <tr>
+    <td><a target="_blank" rel="noopener noreferrer" href="https://www.priceline.com/hotel-deals/en-us/P3000021763/H773802/la-quinta-inn-suites-by-wyndham-san-antonio-airport.ssp"><b>La Quinta Inn &amp; Suites – Airport</b></a> 🔗<br><span class="small">850 Halm Blvd</span></td>
+    <td><b>~$83/night</b><br><span class="small">~$294 total for 3 nights</span></td>
+    <td><b>Best comfort &amp; perks.</b> 4,000+ reviews ("Very Good"), <b>free airport shuttle</b> + <b>free hot waffle breakfast buffet</b> every morning + pool.</td>
+  </tr>
+</table></div>
+<p class="small">💡 <b>Bundle option:</b> On <a target="_blank" rel="noopener noreferrer" href="https://www.priceline.com/flight-routes/en-us/LAX/SAT/flights-from-los-angeles-to-san-antonio.ssp">Priceline Flight + Hotel Packages</a>, bundling flight + hotel can save extra, and Priceline accepts <b>Affirm</b> and <b>Zip</b> at checkout.</p>
+
+<h2 id="payplans">💳 Clickable Payment-Plan Guide (How to Split the Cost)</h2>
+<div class="tablewrap"><table>
+  <tr><th>Provider (tap to open)</th><th>Works On</th><th>How to Set It Up (2 Mins)</th><th>Interest / Fees</th></tr>
+  <tr>
+    <td><a target="_blank" rel="noopener noreferrer" href="https://www.klarna.com/us/articles/travel-with-klarna/flights/"><b>Klarna</b></a> 🔗</td>
+    <td><b>Every airline &amp; hotel</b> (via virtual Visa card)</td>
+    <td>1. Open Klarna app → tap <b>In-store / One-time card</b><br>2. Enter exact flight total → copy the Visa card number into Frontier/Southwest checkout.</td>
+    <td><b>0% APR</b> on Pay in 4 (25% today, then every 2 weeks). Up to $7 late fee if missed.</td>
+  </tr>
+  <tr>
+    <td><a target="_blank" rel="noopener noreferrer" href="https://zip.co/us/shop/flights"><b>Zip</b></a> 🔗</td>
+    <td><b>Every airline, hotel &amp; airport kiosk</b></td>
+    <td>1. Open Zip app → tap <b>Pay with Zip</b><br>2. Enter the flight amount → get instant virtual Visa card for checkout.</td>
+    <td><b>0% APR</b> over 4 payments (6 weeks); small service fee ($0.50–$7) may apply.</td>
+  </tr>
+  <tr>
+    <td><a target="_blank" rel="noopener noreferrer" href="https://www.upgrade.com/flex-pay/"><b>Flex Pay</b></a> 🔗<br><span class="small">(formerly Uplift)</span></td>
+    <td>Built directly into <a target="_blank" rel="noopener noreferrer" href="https://www.flyfrontier.com/flexpay"><b>Frontier</b></a> &amp; <a target="_blank" rel="noopener noreferrer" href="https://www.southwest.com/book-now-pay-later/"><b>Southwest</b></a></td>
+    <td>No app needed first! Just pick <b>Flex Pay</b> on the airline payment screen → enter phone, DOB &amp; SSN for instant monthly terms.</td>
+    <td><b>0–36% APR</b> (3 to 18 monthly payments). <b>$0 late fees</b> &amp; no prepayment penalty.</td>
+  </tr>
+  <tr>
+    <td><a target="_blank" rel="noopener noreferrer" href="https://www.paypal.com/us/digital-wallet/ways-to-pay/buy-now-pay-later"><b>PayPal Pay in 4</b></a> 🔗</td>
+    <td><b>Southwest, American, Delta</b> checkouts</td>
+    <td>Choose <b>PayPal</b> at airline checkout → select <b>Pay Later / Pay in 4</b>.</td>
+    <td><b>0% APR</b> (4 bi-weekly payments) or 6 months no interest on $149+ with PayPal Credit.</td>
+  </tr>
+  <tr>
+    <td><a target="_blank" rel="noopener noreferrer" href="https://pay.affirm.com/shopping/travel"><b>Affirm</b></a> 🔗</td>
+    <td><b>American Airlines, Expedia, Priceline</b> (or virtual card anywhere)</td>
+    <td>Select <b>Affirm</b> at checkout (or create a virtual card in the Affirm app) → pick Pay in 4 or monthly.</td>
+    <td><b>0% APR</b> on Pay in 4; 0–36% APR on monthly plans. <b>$0 late fees.</b></td>
+  </tr>
+</table></div>
+
+<h2 id="hacks">🎒 Crucial Bag, Airport &amp; Local Transit Hacks (Don't Skip!)</h2>
+<div class="tip">
+  <ul>
+    <li><b>📏 Frontier's Exact Free Bag Size:</b> Your 1 free personal item must fit in the metal sizer at the gate: <b>14" H × 18" W × 8" D</b> (including wheels/handles/straps). A normal soft backpack that isn't overstuffed fits easily. If it's too big at the gate, Frontier charges $60–$99!</li>
+    <li><b>📱 Use the Free Frontier App to Check In:</b> Frontier now charges up to <b>$5</b> for website check-in and up to <b>$25</b> if you ask an airport agent to print your pass. Download the mobile app and check in 24 hours before takeoff for $0.</li>
+    <li><b>🧳 Southwest Bag Update (New in 2026):</b> Southwest ended “2 free checked bags” on Basic fares — checked bags now cost <b>$45 (1st bag)</b> and <b>$55 (2nd bag)</b> each way. However, <b>1 full-size carry-on roller bag (10"×16"×24") + 1 personal item are still 100% FREE</b> on Southwest!</li>
+    <li><b>🚌 $1.30 Airport-to-Downtown Bus (Saves $30+ Uber):</b> At San Antonio Airport, walk to the Lower Roadway (Arrivals/Baggage level) at the far west end of <b>Terminal B</b> and hop on <a target="_blank" rel="noopener noreferrer" href="https://flysanantonio.com/home/ground-transportation/public-transportation/"><b>VIA Bus Route 5</b></a>. It goes straight to Downtown / River Walk in ~30 mins for just <b>$1.30</b> (or buy a <b>$2.75 unlimited Day Pass</b> in the <a target="_blank" rel="noopener noreferrer" href="https://www.viainfo.net/rates/">VIA goMobile+ app</a>; seniors 62+, students &amp; military pay half price: <b>$0.65 ride / $1.35 day pass</b>). <i>Note: Express Route 7 is on construction detour, so take Route 5.</i></li>
+  </ul>
+</div>
+
+<h2 id="checklist">✅ Interactive Booking Checklist (Tap as you go)</h2>
+<ul class="checklist">
+  <li><input type="checkbox"> <div><b>Step 1 — Check both travelers' IDs:</b> Make sure you type each person's full legal name &amp; date of birth <i>exactly</i> as shown on their Driver's License / REAL ID / Passport (Frontier charges $75 to fix a typo).</div></li>
+  <li><input type="checkbox"> <div><b>Step 2 — Set up your payment app first (if using Klarna or Zip):</b> Download <a target="_blank" rel="noopener noreferrer" href="https://www.klarna.com/us/">Klarna</a> or <a target="_blank" rel="noopener noreferrer" href="https://zip.co/us">Zip</a> and check your approved spending power before starting airline checkout. (If using <b>Flex Pay</b>, skip this — it's built into Frontier/Southwest checkout.)</div></li>
+  <li><input type="checkbox"> <div><b>Step 3 — Book the flight tonight/tomorrow:</b> Open <a target="_blank" rel="noopener noreferrer" href="https://www.flyfrontier.com">flyfrontier.com</a> (or visit the LAX/SNA counter), pick <b>Nov 2 → Nov 5</b> for 2 adults, say <b>“No”</b> to paid seat selection, bundles, and bags, and complete checkout.</div></li>
+  <li><input type="checkbox"> <div><b>Step 4 — Turn on a Google Flights price alert (24-hr backup):</b> Toggle “Track prices” on <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/travel/flights">Google Flights</a> for Nov 2–5. If a cheaper flight pops up within 24 hours of booking, you can cancel your first booking for a full refund under the 24-hour rule.</div></li>
+  <li><input type="checkbox"> <div><b>Step 5 — Reserve a free-cancellation hotel room:</b> Book <a target="_blank" rel="noopener noreferrer" href="https://www.redroof.com/property/tx/san-antonio/RRI223">Red Roof Inn Airport (~$50/nt)</a> or <a target="_blank" rel="noopener noreferrer" href="https://www.priceline.com/hotel-deals/en-us/P3000021763/H773802/la-quinta-inn-suites-by-wyndham-san-antonio-airport.ssp">La Quinta Airport (~$83/nt w/ breakfast &amp; shuttle)</a> with free cancellation.</div></li>
+  <li><input type="checkbox"> <div><b>Step 6 — 24 hours before Monday's flight:</b> Check in on the airline's mobile app, screenshot both boarding passes, and pack one under-seat backpack each (under 14"×18"×8").</div></li>
+</ul>
+
+<h2>📖 Quick Plain-English Glossary</h2>
+<dl class="gloss">
+  <dt>Round trip vs. One-way</dt><dd><b>Round trip</b> = going there AND coming back on one ticket. <b>One-way</b> = just one direction.</dd>
+  <dt>1 stop (Layover)</dt><dd>You land in a middle city (Las Vegas or Denver) and switch to a second plane to finish the trip. <b>Nonstop</b> = one plane the whole way.</dd>
+  <dt>Basic Fare</dt><dd>The lowest-price ticket. Includes your seat and 1 small backpack/purse under the seat in front of you.</dd>
+  <dt>Pay in 4 vs. Monthly Financing</dt><dd><b>Pay in 4</b> splits the bill into 4 equal payments over 6 weeks with <b>0% interest</b> (25% due today). <b>Monthly financing</b> spreads it over 3–18 months, which shrinks each payment but may add interest.</dd>
+</dl>
+
+<div class="warn"><b>Friendly heads-up:</b> All flight and hotel prices were pulled from live searches on Oct 23, 2026. Airline fares move constantly until you complete checkout. Always double-check the final checkout total (making sure no extra bags or seat fees were auto-added) before hitting Pay.</div>
+
+<footer>
+  Prepared Oct 23, 2026 · Sources verified: Trip.com &amp; Priceline LAX–SAT fare data, Frontier Optional Services tariff (Carrier Interface Charge up to $23/segment online; personal item 14"×18"×8"), Southwest Optional Travel Charges (checked bags $45/$55 effective Apr 9, 2026), FlightsFrom.com Week 45 schedule, RedRoof.com, Motel6.com, VIA Metropolitan Transit (viainfo.net &amp; flysanantonio.com Route 5 $1.30 / $2.75 day pass), Klarna, Zip, Upgrade Flex Pay, Affirm, and Skyscanner.
+</footer>
+
+</div>
+</body>
+</html>
